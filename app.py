@@ -73,7 +73,6 @@ def get_disease_and_generate_prompt(symptoms_input, faiss_index, model_em, merge
     result_list = [
         f"Patient Symptoms: {symptoms_input}",
         f"similarity: {scores}",
-        f"disease: {best_match['Disease']}",
         f"symptoms: {best_match['Symptoms']}",
         f"medications: {best_match['Medication']}",
         f"diets: {best_match['Diet']}",
@@ -136,7 +135,6 @@ def get_prompt(question, raw_contexts):
     
     context = "".join([
         f"\n<b>📌 Trường hợp {i+1}:</b>\n"
-        f"- <b>Bệnh:</b> {x.get('disease', 'Chưa xác định')}\n"
         f"- <b>Triệu chứng:</b> {', '.join(map(str, x.get('symptoms', [])))}\n"
         f"- <b>Thuốc đề xuất:</b> <i>{', '.join(map(str, x.get('medications', [])))}</i>\n"
         f"- <b>Chế độ ăn uống:</b> {', '.join(map(str, x.get('diets', [])))}\n"

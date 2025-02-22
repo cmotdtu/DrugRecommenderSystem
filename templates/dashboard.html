@@ -4538,7 +4538,7 @@
 			$(document).on("click", ".chat-item", function () {
 				currentConversationId = $(this).data("id");
 				$.get(`/conversation/${currentConversationId}`, function (data) {
-					$("#chat-box").empty();
+					$("#").empty();
 					data.messages.forEach(msg => {
 						displayMessage(msg.sender, msg.text, msg.timestamp);
 					});
@@ -4840,28 +4840,6 @@
 		document.addEventListener("DOMContentLoaded", loadConversations);
 
 	</script>
-	<script>
-		// Hàm lọc danh sách khi người dùng gõ vào input
-		function filterList() {
-			// Lấy giá trị nhập vào từ input
-			const filter = document.getElementById('searchInput').value.toLowerCase();
-
-			// Lấy tất cả các mục trong danh sách
-			const items = document.getElementById('chat-list').getElementsByTagName('a');
-
-			// Lặp qua tất cả các mục trong danh sách và ẩn hoặc hiển thị chúng
-			for (let i = 0; i < items.length; i++) {
-				const item = items[i];
-				// Kiểm tra nếu tên mục chứa từ khóa tìm kiếm (không phân biệt chữ hoa chữ thường)
-				if (item.innerHTML.toLowerCase().indexOf(filter) > -1) {
-					item.style.display = '';  // Hiển thị mục
-				} else {
-					item.style.display = 'none';  // Ẩn mục
-				}
-			}
-		}
-	</script>
-
 </body>
 
 </html>
